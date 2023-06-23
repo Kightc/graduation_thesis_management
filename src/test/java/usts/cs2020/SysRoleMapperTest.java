@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import usts.cs2020.mapper.SysRoleMapper;
 import usts.cs2020.model.system.SysRole;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class SysRoleMapperTest {
         List<SysRole> sysRoles = sysRoleMapper.selectList(wrapper);
         System.out.println(sysRoles);
     }
-    @Test
+    @Test//增
     public void testInsert(){
         System.out.println("----------- insert method test -----");
         SysRole sysRole = new SysRole();
@@ -61,6 +62,11 @@ public class SysRoleMapperTest {
     @Test
     public void testDelete(){
         sysRoleMapper.deleteById(1);
+    }
+    @Test
+    public void testDeleteBatchIds(){
+        int result = sysRoleMapper.deleteBatchIds(Arrays.asList(1,2));
+        System.out.println(result);
     }
 
 
